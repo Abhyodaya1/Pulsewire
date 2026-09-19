@@ -1,39 +1,70 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   SafeAreaView,
   StatusBar,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
-import { getVersion } from '@rn-studio/sdk';
+import { getVersion, RNStudio } from '@rn-studio/sdk';
 
 export default function App(): React.JSX.Element {
   const sdkVersion = getVersion();
+  const [hostTapCount, setHostTapCount] = useState<number>(0);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="light-content" backgroundColor="#030712" />
-      <View style={styles.card}>
-        <Text style={styles.badge}>DEMO HOST APP</Text>
-        <Text style={styles.title}>RN Studio</Text>
-        <Text style={styles.subtitle}>
-          React Native Integration Testbed
-        </Text>
-        <View style={styles.divider} />
-        <Text style={styles.statusText}>
-          Embedded SDK Protocol:{' '}
-          <Text style={styles.highlight}>v{sdkVersion}</Text>
-        </Text>
-      </View>
-    </SafeAreaView>
+    <View style={styles.root}>
+      <SafeAreaView style={styles.container}>
+        <StatusBar barStyle="light-content" backgroundColor="#030712" />
+
+        {/* Host App Main Card */}
+        <View style={styles.card}>
+          <Text style={styles.badge}>DEMO HOST APP</Text>
+          <Text style={styles.title}>RN Studio</Text>
+          <Text style={styles.subtitle}>
+            React Native Integration Testbed
+          </Text>
+
+          <View style={styles.divider} />
+
+          <Text style={styles.statusText}>
+            Embedded SDK Protocol:{' '}
+            <Text style={styles.highlight}>v{sdkVersion}</Text>
+          </Text>
+
+          {/* Interactive touch pass-through test button */}
+          <View style={styles.testSection}>
+            <Text style={styles.testLabel}>Touch Pass-Through Verification:</Text>
+            <TouchableOpacity
+              activeOpacity={0.7}
+              style={styles.hostButton}
+              onPress={() => setHostTapCount((prev) => prev + 1)}
+            >
+              <Text style={styles.hostButtonText}>
+                Tap Host App Button ({hostTapCount})
+              </Text>
+            </TouchableOpacity>
+            <Text style={styles.hintText}>
+              Verifies the floating bubble does not block host UI touches.
+            </Text>
+          </View>
+        </View>
+      </SafeAreaView>
+
+      {/* The In-App DevTools Overlay */}
+      <RNStudio enabled={true} />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  root: {
     flex: 1,
     backgroundColor: '#030712',
+  },
+  container: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
@@ -78,5 +109,34 @@ const styles = StyleSheet.create({
   highlight: {
     color: '#34d399',
     fontWeight: '700',
+  },
+  testSection: {
+    marginTop: 20,
+    paddingTop: 16,
+    borderTopWidth: 1,
+    borderTopColor: 'rgba(255, 255, 255, 0.06)',
+  },
+  testLabel: {
+    fontSize: 12,
+    color: '#94a3b8',
+    marginBottom: 8,
+  },
+  hostButton: {
+    backgroundColor: '#0284c7',
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  hostButtonText: {
+    color: '#ffffff',
+    fontSize: 14,
+    fontWeight: '700',
+  },
+  hintText: {
+    fontSize: 11,
+    color: '#64748b',
+    marginTop: 6,
+    textAlign: 'center',
   },
 });
