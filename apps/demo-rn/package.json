@@ -1,0 +1,21 @@
+{
+  "name": "@rn-studio/demo-rn",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@rn-studio/protocol": "workspace:*",
+    "@rn-studio/sdk": "workspace:*",
+    "react": "18.3.1",
+    "react-native": "0.74.5"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.0",
+    "typescript": "^5.5.0"
+  }
+}

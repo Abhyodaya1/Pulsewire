@@ -1,0 +1,94 @@
+# ==========================================
+# Dependencies & Package Managers
+# ==========================================
+node_modules/
+**/node_modules/
+.pnpm-store/
+**/.pnpm-store/
+
+# ==========================================
+# Build & Distribution Outputs
+# ==========================================
+dist/
+**/dist/
+build/
+**/build/
+out/
+**/out/
+.next/
+**/.next/
+*.tsbuildinfo
+**/*.tsbuildinfo
+
+# ==========================================
+# Environment Variables & Secrets (CRITICAL)
+# ==========================================
+.env
+.env.*
+**/.env
+**/.env.*
+!.env.example
+!**/.env.example
+
+# ==========================================
+# Logs & Runtime Dumps
+# ==========================================
+*.log
+**/*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ==========================================
+# Testing & Coverage
+# ==========================================
+coverage/
+**/coverage/
+.nyc_output/
+playwright-report/
+test-results/
+
+# ==========================================
+# React Native, Metro & Bundler Caches
+# ==========================================
+.metro/
+**/.metro/
+metro-cache/
+**/metro-cache/
+.expo/
+**/.expo/
+
+# Mobile Native Builds (Android / iOS)
+*.apk
+*.aab
+*.ipa
+**/*.apk
+**/*.aab
+**/*.ipa
+apps/demo-rn/android/.gradle/
+apps/demo-rn/android/app/build/
+apps/demo-rn/android/build/
+apps/demo-rn/ios/Pods/
+apps/demo-rn/ios/build/
+*.xcworkspace
+*.moved-aside
+
+# ==========================================
+# IDE & System Files
+# ==========================================
+.DS_Store
+Thumbs.db
+.idea/
+**/.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+*.swp
+
+# ==========================================
+# Turborepo & Cache
+# ==========================================
+.turbo/
+**/.turbo/
+.eslintcache
